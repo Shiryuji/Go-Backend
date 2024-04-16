@@ -2,6 +2,6 @@ package databases
 
 import "gorm.io/gorm"
 
-type Database interface{
-	ConnectionGetting() *gorm.DB
+type Database interface {
+	Connect() *gorm.DB
 }

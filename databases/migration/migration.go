@@ -11,7 +11,7 @@ func main() {
 	conf := config.ConfigGetting()
 	db := databases.NewPostgresDatabase(conf.Database)
 
-	tx := db.ConnectionGetting().Begin()
+	tx := db.Connect().Begin()
 
 	playerMigration(tx)
 	adminMigration(tx)
@@ -49,4 +49,3 @@ func inventoryMigration(tx *gorm.DB) {
 func purchaseHistoryMigration(tx *gorm.DB) {
 	tx.Migrator().CreateTable(&entities.PurchaseHistory{})
 }
-
